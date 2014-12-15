@@ -1,0 +1,12 @@
+<ul id="tasks-list">
+  {{#each itemController="task"}}
+    <li {{bind-attr class="isCompleted:completed isEditing:editing" }}>
+      {{#if isEditing }}
+        {{edit-task class="edit" value=comment focus-out="acceptChanges" insert-newline="acceptChanges"}}
+      {{else}}
+        {{input type="checkbox" checked=isCompleted class="toggle"}}
+        <label {{action "editTask" on="doubleClick"}}>{{comment}}</label><button {{action "removeTask"}} class="destroy"></button>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>
